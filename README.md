@@ -9,11 +9,8 @@ CryptoLabX is a modular cryptography and cryptanalysis toolkit developed as part
 ## Team Members
 
 - Rajesh Chavan
-- Member 2
-- Member 3
-- Member 4
-
-(Replace with your actual group members.)
+- Teja Swaroop
+  
 
 ---
 
