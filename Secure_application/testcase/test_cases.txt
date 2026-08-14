@@ -1,0 +1,47 @@
+LIBRARY MANAGEMENT SYSTEM - TEST CASES
+
+1. Member Registration
+Input: Name = Raj, Email = raj@gmail.com
+Expected: Member registered successfully.
+Result: PASS
+
+2. Book Search
+Input: Alchemist
+Expected: The Alchemist is displayed.
+Result: PASS
+
+3. Book Issue
+Input: Member ID = 1, Book ID = 1
+Expected: Book issued successfully.
+Result: PASS
+
+4. Book Return
+Input: Member ID = 1, Book ID = 1
+Expected: Book returned successfully.
+Result: PASS
+
+5. Fine Calculation
+Input: 10 days
+Expected: Fine = Rs. 15
+Result: PASS
+
+
+VULNERABILITY TESTS
+
+6. SQL Injection
+Input: ' OR '1'='1
+Expected: Input should be safely handled.
+Result: SQL query error / unsafe input handling.
+Status: VULNERABLE
+
+7. XSS
+Input: <script>alert("XSS")</script>
+Expected: Input should be sanitized.
+Result: Input accepted without sanitization.
+Status: VULNERABLE
+
+8. Missing Authentication
+Action: Issue a book without logging in.
+Expected: Login should be required.
+Result: Book operation is allowed without login.
+Status: VULNERABLE
