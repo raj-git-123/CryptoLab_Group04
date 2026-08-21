@@ -1,30 +1,33 @@
-def encrypt(plaintext, key):
-    result = ""
+ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    for char in plaintext:
-        if char.isalpha():
-            if char.isupper():
-                result += chr((ord(char) - ord('A') + key) % 26 + ord('A'))
-            else:
-                result += chr((ord(char) - ord('a') + key) % 26 + ord('a'))
+
+def encrypt(text, key):
+    """Encrypt alphabetic characters using a Caesar/shift cipher."""
+    key %= 26
+    result = []
+    for ch in text:
+        if ch.isalpha():
+            base = ord('A') if ch.isupper() else ord('a')
+            result.append(chr((ord(ch) - base + key) % 26 + base))
         else:
-            result += char
-
-    return result
-
-
-def decrypt(ciphertext, key):
-    return encrypt(ciphertext, -key)
+            result.append(ch)
+    return ''.join(result)
 
 
-if __name__ == "__main__":
-    plaintext = "THE QUICK BROWN FOX"
+def decrypt(text, key):
+    """Decrypt alphabetic characters using a Caesar/shift cipher."""
+    return encrypt(text, -key)
+
+
+def brute_force(text):
+    """Return all 26 possible plaintexts, indexed by encryption key."""
+    return [(key, decrypt(text, key)) for key in range(26)]
+
+
+if __name__ == '__main__':
+    sample = 'HELLO WORLD'
     key = 3
-
-    ciphertext = encrypt(plaintext, key)
-    decrypted = decrypt(ciphertext, key)
-
-    print("Plaintext :", plaintext)
-    print("Key       :", key)
-    print("Ciphertext:", ciphertext)
-    print("Decrypted :", decrypted)
+    cipher = encrypt(sample, key)
+    print('Plaintext :', sample)
+    print('Ciphertext:', cipher)
+    print('Decrypted :', decrypt(cipher, key))
